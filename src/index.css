@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: '#FFD705';
+  background-image: url("./pulsar.jpg");
+  background-size: 100%;
+  background-position: center;
+}
+
+.title{
+  color: #FFD705;
+  transition: all 1s;
+}
+
+.letter{
+  display: inline-block;
+  font-size: 100px;
+  font-weight: bold;
+  font-family: 'Russo One', sans-serif;
+  margin-bottom: 0;
+}
+
+.shift-to-row{
+  display: inline-block;
+}
+
+.C{
+  animation-delay: 0s;
+}
+
+.R{
+  animation-delay: .5s;
+}
+.A{
+  animation-delay: 1s;
+}
+.P{
+  animation-delay: 1.5s;
+}
+.S{
+  animation-duration: 3s;
+  animation-delay: 3s;
+}
+
+.in{
+  animation-duration: 1s;
+  animation-delay: 5s;
+  font-size: 45px;
+  font-family: 'Russo One', sans-serif;
+  margin-top: 20px;
+}
+
+.SPACE{
+  animation-duration: 1s;
+  animation-delay: 5.5s;
+  font-size: 75px;
+  font-family: 'Russo One', sans-serif;
+  margin-top: -20px;
+}
+
+#renderCanvas {
+  width   : 85%;
+  height  : 60%;
+  touch-action: none;
+  margin: 0 auto;
+}
+
+.the-game{
+  animation-delay: 4s;
+  font-size: 15px;
+  margin-top: -20px;
+}
