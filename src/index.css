@@ -43,6 +43,9 @@ body {
   animation-delay: 3s;
 }
 
+.message{
+  animation-delay: 6.5s;
+}
 .in{
   animation-duration: 1s;
   animation-delay: 5s;
@@ -61,7 +64,7 @@ body {
 
 #renderCanvas {
   width   : 85%;
-  height  : 60%;
+  height  : 40%;
   touch-action: none;
   margin: 0 auto;
 }
@@ -70,4 +73,10 @@ body {
   animation-delay: 4s;
   font-size: 15px;
   margin-top: -20px;
+}
+
+.ScoreBoard{
+  color: #FFD705;
+  font-size: 40px;
+  font-family: 'Russo One', sans-serif;
 }

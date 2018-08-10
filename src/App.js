@@ -27,9 +27,17 @@ class App extends Component {
         <div className={`animated flipInX title the-game ${this.state.gameRunning ? 'shift-to-row': null}`}>(the game)</div>
         <div className={`animated jackInTheBox in title ${this.state.gameRunning ? 'shift-to-row': null}`}>IN</div>
         <div className={`animated jackInTheBox SPACE title ${this.state.gameRunning ? 'shift-to-row': null}`}>SPACE</div>
-        <button onClick={this.startGame}>Start Game</button>
+        { !this.state.gameRunning ? 
+          <div className={'animated zoomIn title message slow'} style={{opacity:'.75', width: '50%', textAlign:'center', backgroundColor: 'black', marginLeft: 'auto', marginRight: 'auto', fontSize: '25px'}}>
+            In the year 2018, as the AI singularity approaches, machines have made a wager with 'the chosen one' to save humanity from extinction. You are the chosen one, and you must save humanity by playing ...CRAPS, IN SPACE!
+          </div>
+        :
+          null
+        }
+        <button style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}} onClick={this.startGame}>Start Game</button>
+        {this.state.gameRunning ? <ScoreBoard /> : null} 
         <canvas id="renderCanvas"></canvas>
-        <ScoreBoard />
+        
       </div>
     );
   }

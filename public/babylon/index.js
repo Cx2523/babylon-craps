@@ -2,6 +2,7 @@
         var canvas = document.getElementById('renderCanvas');
         var engine = new BABYLON.Engine(canvas, true);
 
+        // var rollDataArray = [{ dice1: null, dice2: null }];
         var createScene = function () {
 
             var scene = new BABYLON.Scene(engine);
@@ -174,21 +175,31 @@
                     mesh.physicsImpostor.getLinearVelocity().z < threshold
                 );
             }
-        
-            window.rollData = { dice1: null, dice2: null };
+            var diceUpdated = [false, false];
+            var rollDataArray = [{ dice1: null, dice2: null }];
+            var rollData;
             function getFaceUp(mesh) {
-            
+                console.log(diceUpdated);
+                
                 for (var i = 0; i < 12; i++ ){
+                    
                     if (Math.abs(mesh.getFacetNormal(i).y - 1) < .5) {
-                        if (mesh.name === box1) {
-                            window.rollData.dice1 = facetsToDiceNumber(i);
+                        if (mesh.name === 'box1') {
+                            rollData['dice1'] = facetsToDiceNumber(i);
+                            diceUpdated[0] = true;
+                             
                         } else {
-                            window.rollData.dice2 = facetsToDiceNumber(i)
+                            rollData['dice2'] = facetsToDiceNumber(i);
+                            diceUpdated[1] = true;
                         }
-                        window.dispatchEvent(new Event('rollCompleted'));   
-                        console.log('You rolled a ' + facetsToDiceNumber(i) + ' on dice ' + mesh.name);
-                        break;
+                        i = 13;
                     }
+                }
+                if (diceUpdated[0] && diceUpdated[1]) {
+                    window.rollData = rollData;
+                    window.dispatchEvent(new Event('rollCompleted'));
+                    diceUpdated[0] = false;
+                    diceUpdated[1] = false;
                 }
             }
         
@@ -205,6 +216,7 @@
                         }) 
                     ) {
                         console.log('stopped');
+                        rollData = new Object({ dice1: null, dice2: null });
                         meshes.forEach(function(mesh){
                             getFaceUp(mesh);
                         });
