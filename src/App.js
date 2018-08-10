@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import ScoreBoard from './ScoreBoard'
 
 class App extends Component {
   constructor(props){
@@ -27,7 +28,8 @@ class App extends Component {
         <div className={`animated jackInTheBox in title ${this.state.gameRunning ? 'shift-to-row': null}`}>IN</div>
         <div className={`animated jackInTheBox SPACE title ${this.state.gameRunning ? 'shift-to-row': null}`}>SPACE</div>
         <button onClick={this.startGame}>Start Game</button>
-        <canvas id="renderCanvas"></canvas> 
+        <canvas id="renderCanvas"></canvas>
+        <ScoreBoard />
       </div>
     );
   }

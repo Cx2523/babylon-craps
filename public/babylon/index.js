@@ -175,10 +175,18 @@
                 );
             }
         
-            function getFaceUp(mesh, threshold) {
+            window.rollData = { dice1: null, dice2: null };
+            function getFaceUp(mesh) {
+            
                 for (var i = 0; i < 12; i++ ){
                     if (Math.abs(mesh.getFacetNormal(i).y - 1) < .5) {
-                        console.log('You rolled a ' + facetsToDiceNumber(i));
+                        if (mesh.name === box1) {
+                            window.rollData.dice1 = facetsToDiceNumber(i);
+                        } else {
+                            window.rollData.dice2 = facetsToDiceNumber(i)
+                        }
+                        window.dispatchEvent(new Event('rollCompleted'));   
+                        console.log('You rolled a ' + facetsToDiceNumber(i) + ' on dice ' + mesh.name);
                         break;
                     }
                 }
